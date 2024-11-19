@@ -36,7 +36,7 @@ function getUsers(){
     let html = ""
 
     //api from other sites
-    fetch('https://api.sampleapis.com/switch/games',{mode:'cors'}) 
+    fetch('https://bscs3b-crud-api-yvd4.onrender.com/api/members',{mode:'cors'}) 
         //{mode:'cors'} cross origin request - if in different URL or domain
        
    
@@ -61,7 +61,7 @@ function getUsers(){
            
            
             //storing the elements to variable html
-            html+=`<li>${element.name} ${element.developers}</li>`
+            html+=`<li>${element.first_name} ${element.last_name}</li>`
 
 
         })
