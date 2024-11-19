@@ -36,7 +36,8 @@ function getUsers(){
     let html = ""
 
     //api from other sites
-    fetch('http://localhost:5000/api/members',{mode:'cors'}) //{mode:'cors'} cross origin request - if in different URL or domain
+    fetch('https://api.sampleapis.com/codingresources/codingResources',{mode:'cors'}) 
+        //{mode:'cors'} cross origin request - if in different URL or domain
        
    
     .then(response => {
@@ -60,7 +61,7 @@ function getUsers(){
            
            
             //storing the elements to variable html
-            html+=`<li>${element.first_name} ${element.last_name}</li>`
+            html+=`<li>${element.description} ${element.url}</li>`
 
 
         })
