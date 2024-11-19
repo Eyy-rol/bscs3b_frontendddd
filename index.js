@@ -16,32 +16,65 @@
 // })
 
 
-const content = document.querySelector("#content")
+//id selector from html file
+const content=document.querySelector('#content')
 
-window.addEventListener("load"),()=>{
-    getUsers();
-}
+
+//loading the page
+window.addEventListener('load', () => {
+
+    getUsers()
+
+
+})
+
+//function to get all users
 
 function getUsers(){
 
-let html =""
+    //declaring empty variable
+    let html = ""
 
-    fetch("http://localhost:6003/juandelacruzAPI/",{mode:"cors"}) //cross orginal
+    //api from other sites
+    fetch('http://localhost:5000/api/members',{mode:'cors'}) //{mode:'cors'} cross origin request - if in different URL or domain
+       
+   
+    .then(response => {
+        //getting the response from the api
+        console.log(response)
 
-.then((response)=>{
-    console.log(response)
-    return response.json();
-})
+        //return the format of the response as json
+        return response.json()
 
-.then((data) => { data.forEach((element)=>{
-html += `<li> ${element.first_name} ${element.last_name}</li>`
-    })
-content.innerHTML = html
-})
 
-.catch((error)=>{
+        //returning the data
+    }).then(data => {
+        //returning the log data
+        console.log(data)
+        //displaying in DOM Document Object Model
+        //access to the element
+        data.forEach(element => {
+            //specific element like first_name only
+            //console.log(element); //all records
+           //console.log(element.first_name);
+           
+           
+            //storing the elements to variable html
+            html+=`<li>${element.first_name} ${element.last_name}</li>`
 
-    console.log(error)
-    })
+
+        })
+
+
+        //grab the content id
+        content.innerHTML=html
+
+        //to catch the error if there is a problem
+       }).catch(error => {
+
+            console.log(error)
+
+       })
+
 
 }
